@@ -5,3 +5,5 @@ cassandra_service_environment_file: "env"
 cassandra_container_name: "cassandra"
 cassandra_image_repo: "cassandra"
 cassandra_image_tag: "4.0"
+cassandra_cluster_name: "default"
+
