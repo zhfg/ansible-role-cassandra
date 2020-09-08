@@ -2,11 +2,11 @@
 # tasks file for ansible-role-cassandra
 - name: make sure first two nodes are seeds
   set_fact: 
-    cassandra_cluster_seeds: "{% for host in groups['all'][:2] %}{{hostvars[host]['ansible_host'] | join(',')}}{% endfor %}"
+    cassandra_cluster_seeds: "{% for host in groups['all'][:2] %}{{hostvars[host]['ansible_host']}},{% endfor %}"
 
 - name: Print cassandra_cluster_seeds
   debug:
-    msg: "{{ cassandra_cluster_seeds }}"
+    msg: "{{ cassandra_cluster_seeds | spilt(',') | join(',') }}"
 - name: make sure cassandra service env path is existing
   file:
     path: "{{ cassandra_service_environment_path }}"
