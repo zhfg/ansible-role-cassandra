@@ -6,7 +6,7 @@
 
 - name: Print cassandra_cluster_seeds
   debug:
-    msg: "{{ cassandra_cluster_seeds | split(',') | join(',') }}"
+    msg: "{{ cassandra_cluster_seeds.split(',') | join(',') }}"
 - name: make sure cassandra service env path is existing
   file:
     path: "{{ cassandra_service_environment_path }}"
