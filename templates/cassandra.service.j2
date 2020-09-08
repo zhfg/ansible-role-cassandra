@@ -1,0 +1,15 @@
+[Unit]
+Description=Cassandra Service
+After=docker.service
+Requires=docker.socket
+ 
+[Service]
+Restart=always
+#EnvironmentFile=/etc/cassandra/cassandra.env
+EnvironmentFile={{ cassandra_service_environment_file_path}}/{{ cassandra_service_environment_file_name}}
+ExecStartPre=/bin/bash -c "/usr/bin/docker container inspect ${CASSANDRA_CONTAINER_NAME} 2> /dev/null || /usr/bin/docker run -d --name ${CASSANDRA_CONTAINER_NAME} ${CASSANDRA_IMAGE_REPO}:${CASSANDRA_IMAGE_TAG}"
+ExecStart=/usr/bin/docker start -a ${CASSANDRA_CONTAINER_NAME}
+ExecStop=/usr/bin/docker stop -t 10 ${CASSANDRA_CONTAINER_NAME}
+ 
+[Install]
+WantedBy=multi-user.target

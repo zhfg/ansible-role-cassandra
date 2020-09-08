@@ -1,0 +1,26 @@
+---
+# tasks file for ansible-role-cassandra
+- name: make sure cassandra service env path is existing
+  file:
+    path: {{ cassandra_service_environment_path }}
+    state: directory
+    mode: '0755'
+
+- name: generate cassandra service env file
+  template:
+    src: cassandra.service.env.j2
+    dest: {{ cassandra_service_environment_path }}/{{ cassandra_service_environment_file }}
+
+- name: setup cassandra service
+  template:
+    src: cassandra.service.j2
+    dest: /etc/systemd/system/cassandra.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: maek sure cassandra service is enabled and running
+  service:
+    name: cassandra.service
+    enabled: true
+    state: restarted
