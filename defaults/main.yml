@@ -6,4 +6,5 @@ cassandra_container_name: "cassandra"
 cassandra_image_repo: "cassandra"
 cassandra_image_tag: "4.0"
 cassandra_cluster_name: "default"
-
+cassandra_endpoint_snitch: "GossipingPropertyFileSnitch"
+cassandra_cluster_seeds: "192.168.1.254,192.168.1.253,192.168.1.252"
