@@ -9,7 +9,7 @@
 - name: generate cassandra service env file
   template:
     src: cassandra.service.env.j2
-    dest: {{ cassandra_service_environment_path }}/{{ cassandra_service_environment_file }}
+    dest: "{{ cassandra_service_environment_path }}/{{ cassandra_service_environment_file }}"
 
 - name: setup cassandra service
   template:
