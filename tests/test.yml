@@ -1,5 +1,5 @@
 ---
-- hosts: storage
+- hosts: cassandra
   remote_user: root
   roles:
     - ansible-role-cassandra
