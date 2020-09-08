@@ -2,7 +2,7 @@
 # tasks file for ansible-role-cassandra
 - name: make sure first two nodes are seeds
   set_fact: 
-    cassandra_cluster_seeds: "{% for host in groups['all'] %}{{hostvars[host]['ansible_ssh_host']}}{% endfor %}"
+    cassandra_cluster_seeds: "{% for host in groups['all'] %}{{hostvars[host]['ansible_host']}}{% endfor %}"
 
 - name: Print cassandra_cluster_seeds
   debug:
