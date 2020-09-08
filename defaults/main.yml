@@ -1,7 +1,7 @@
 ---
 # defaults file for ansible-role-cassandra
-cassandra_service_environment_file_path = "/etc/cassandra/"
-cassandra_service_environment_file_name = "env"
-cassandra_container_name="cassandra"
-cassandra_image_repo="cassandra"
-cassandra_image_tag="4.0"
+cassandra_service_environment_file_path: "/etc/cassandra/"
+cassandra_service_environment_file_name: "env"
+cassandra_container_name: "cassandra"
+cassandra_image_repo: "cassandra"
+cassandra_image_tag: "4.0"
