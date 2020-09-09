@@ -7,7 +7,7 @@ Requires=docker.socket
 Restart=always
 #EnvironmentFile=/etc/cassandra/cassandra.env
 EnvironmentFile={{ cassandra_service_environment_path}}/{{ cassandra_service_environment_file }}
-ExecStartPre=/bin/bash -c "/usr/bin/docker container inspect ${CASSANDRA_CONTAINER_NAME} 2> /dev/null || /usr/bin/docker run -d --name  ${CASSANDRA_CONTAINER_NAME} -network host -v${CASSANDRA_DATA_PATH}:/var/lib/cassandra -v${CASSANDRA_CONFIG_PATH}/${CASSANDRA_CNFIG_FILE}:/etc/cassandra/cassandra.yaml ${CASSANDRA_IMAGE_REPO}:${CASSANDRA_IMAGE_TAG}"
+ExecStartPre=/bin/bash -c "/usr/bin/docker container inspect ${CASSANDRA_CONTAINER_NAME} 2> /dev/null || /usr/bin/docker run -d --name  ${CASSANDRA_CONTAINER_NAME} --network host -v${CASSANDRA_DATA_PATH}:/var/lib/cassandra -v${CASSANDRA_CONFIG_PATH}/${CASSANDRA_CNFIG_FILE}:/etc/cassandra/cassandra.yaml ${CASSANDRA_IMAGE_REPO}:${CASSANDRA_IMAGE_TAG}"
 ExecStart=/usr/bin/docker start -a ${CASSANDRA_CONTAINER_NAME}
 ExecStop=/usr/bin/docker stop -t 10 ${CASSANDRA_CONTAINER_NAME} || /usr/bin/docker rm ${CASSANDRA_CONTAINER_NAME}
  
