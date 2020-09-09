@@ -8,16 +8,16 @@
 #    - Docker | reload docker
 #    - Docker | wait for docker
 
-- name: Docker | reload systemd
+- name: Cassandra | reload systemd
   systemd:
     daemon_reload: true
 
-- name: Docker | reload cassandra.service
+- name: Cassandra | reload cassandra.service
   service:
     name: cassandra.service
     state: restarted
 
-- name: Docker | wait for cassandra
+- name: Cassandra | wait for cassandra
   command: "{{ docker_bin_dir }}/docker images"
   register: docker_ready
   retries: 20
