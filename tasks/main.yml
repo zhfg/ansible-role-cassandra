@@ -18,11 +18,13 @@
   template:
     src: cassandra.service.env.j2
     dest: "{{ cassandra_service_environment_path }}/{{ cassandra_service_environment_file }}"
+  notify:  restart cassandra
 
 - name: sync cassandra config file cassandra.yaml
   template:
     src: cassandra.yaml.j2
     dest: "/etc/cassandra/cassandra.yaml"
+  notify:  restart cassandra
 
 - name: setup cassandra service
   template:
@@ -31,9 +33,12 @@
     owner: root
     group: root
     mode: '0644'
+  notify:  restart cassandra
 
 - name: maek sure cassandra service is enabled and running
   service:
-    name: cassandra.service
-    enabled: true
-    state: restarted
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - cassandra.service
