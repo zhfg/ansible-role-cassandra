@@ -35,10 +35,15 @@
     mode: '0644'
   notify:  restart cassandra
 
+- name: Cassandra | reload systemd
+  systemd:
+    daemon_reload: true
+
 - name: maek sure cassandra service is enabled and running
   service:
     name: "{{ item }}"
     enabled: yes
     state: started
+    
   with_items:
     - cassandra.service
