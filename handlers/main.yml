@@ -3,8 +3,8 @@
 - name: restart cassandra
   command: /bin/true
   notify:
-    - Docker | reload systemd
-    - Docker | reload cassandra.service
+    - Cassandra | reload systemd
+    - Cassnadra | reload cassandra.service
 #    - Docker | reload docker
 #    - Docker | wait for docker
 
