@@ -3,7 +3,7 @@
 cassandra_service_environment_path: "/etc/cassandra/"
 cassandra_service_environment_file: "cassandra.env"
 cassandra_container_name: "cassandra"
-cassandra_image_repo: "cassandra"
+cassandra_image_repo: "registry.connextpaas.com/connextpaas/cassandra"
 cassandra_image_tag: "4.0"
 cassandra_cluster_name: "default"
 cassandra_endpoint_snitch: "GossipingPropertyFileSnitch"

@@ -1,3 +1,6 @@
 - name: ansible-role-cassandra
   src: https://github.com/zhfg/ansible-role-cassandra
   version: master
+- name: docker
+  src: https://github.com/ericsysmin/ansible-collection-docker
+  version: master

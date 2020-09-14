@@ -1,12 +1,15 @@
-storage ansible_host=192.168.1.254 ansible_ssh_user=root ansible_ssh_pass=zhfg45
-proxy ansible_host=192.168.1.250 ansible_ssh_user=root ansible_ssh_pass=zhfg45
-
+#storage ansible_host=192.168.1.254 ansible_ssh_user=root ansible_ssh_pass=zhfg4
+cassandra01 ansible_host=192.168.1.240 ansible_ssh_user=root ansible_ssh_pass=zhfg45
+cassandra02 ansible_host=192.168.1.241 ansible_ssh_user=root ansible_ssh_pass=zhfg45
+cassandra03 ansible_host=192.168.1.242 ansible_ssh_user=root ansible_ssh_pass=zhfg45
 
 [seeds]
-storage
+cassandra01
 
 [nodes]
-stroage
+cassandra01
+cassandra02
+cassandra03
 
 [cassandra:children]
 seeds
