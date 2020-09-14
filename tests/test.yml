@@ -1,6 +1,12 @@
 ---
+ 
 - hosts: all
   remote_user: root
+  tasks:
+  - name: disable firewall
+    service:
+      name: firewalld
+      enabled: no
   roles:
     - docker
     - ansible-role-cassandra

@@ -12,7 +12,7 @@
   systemd:
     daemon_reload: true
 
-- name: Cassandra | reload cassandra.service
+- name: Cassnadra | reload cassandra.service
   service:
     name: cassandra.service
     state: restarted
