@@ -21,7 +21,7 @@
 - name: Cassnadra | stop cassandra.service
   service:
     name: cassandra.service
-    state: stoped
+    state: stopped
 
 - name: Cassnadra | start cassandra.service
   service:
