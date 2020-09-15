@@ -4,7 +4,8 @@
   command: /bin/true
   notify:
     - Cassandra | reload systemd
-    - Cassnadra | reload cassandra.service
+    - Cassnadra | stop cassandra.service
+    - Cassnadra | start cassandra.service
 #    - Docker | reload docker
 #    - Docker | wait for docker
 
@@ -13,6 +14,16 @@
     daemon_reload: true
 
 - name: Cassnadra | reload cassandra.service
+  service:
+    name: cassandra.service
+    state: restarted
+
+- name: Cassnadra | stop cassandra.service
+  service:
+    name: cassandra.service
+    state: stoped
+
+- name: Cassnadra | start cassandra.service
   service:
     name: cassandra.service
     state: restarted
